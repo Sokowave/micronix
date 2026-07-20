@@ -33,10 +33,10 @@ class SiteSettingSeeder extends Seeder
         $settings = [
 
             // General
-            'site_name' => ['Micronix', 'string'],
-            'site_url' => ['https://micronix.co.ke', 'string'],
+            'site_name' => ['Micronix Gadgets', 'string'],
+            'site_url' => [$baseUrl, 'string'],
             'locale' => ['en_KE', 'string'],
-            'theme_color' => ['#2563eb', 'string'],
+            'theme_color' => ['#ffffff', 'string'],
 
             // Branding
             'site_logo' => [$logo->id, 'media'],
@@ -45,7 +45,7 @@ class SiteSettingSeeder extends Seeder
 
             // SEO
             'site_seo_title' => [
-                'Micronix Kenya | Phone Accessories, Gadgets & Electronics',
+                'Micronix Gadgets | Phone Accessories, Gadgets & Electronics',
                 'string',
             ],
 
