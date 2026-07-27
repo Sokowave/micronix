@@ -2,3 +2,8 @@ git status
 git add .
 git commit -m "Update Micronix project"
 git push origin main
+
+
+php artisan optimize:clear
+composer dump-autoload -o
+php artisan optimize
