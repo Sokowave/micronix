@@ -5,7 +5,7 @@
     @include('partials.frontend.products.show.breadcrumbs')
 
     {{-- Product --}}
-    <section class="py-5 sm:py-6">
+    <section class="sm:py-6">
         <div class="mx-auto max-w-7xl px-2 xl:px-6">
 
             <div

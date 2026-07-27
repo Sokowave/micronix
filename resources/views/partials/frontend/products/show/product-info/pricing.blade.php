@@ -1,4 +1,5 @@
 {{-- resources/views/partials/frontend/products/show/product-info/pricing.blade.php --}}
+@include('partials/frontend/products/show/deal-countdown')
 
 @php
     $details = $product->details();

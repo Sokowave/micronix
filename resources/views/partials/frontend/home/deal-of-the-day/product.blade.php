@@ -1,43 +1,66 @@
 {{-- resources/views/partials/frontend/home/deal-of-the-day/product.blade.php --}}
 
+@php
+    $details = $product->details();
+    $primaryMedia = $details->primaryMedia();
+@endphp
+
 <article class="group flex h-full min-w-0 flex-col bg-white p-3">
 
     {{-- Image --}}
     <div class="relative flex h-[125px] items-center justify-center">
         <a
-            href="#"
+            href="{{ route('products.show', $product->slug) }}"
             wire:navigate
             class="flex h-full w-full items-center justify-center"
         >
-            <img
-                src="{{ $image }}"
-                alt="{{ $name }}"
-                class="
-                    max-h-full max-w-full
-                    object-contain
-                    transition-transform duration-300
-                    group-hover:scale-105
-                "
-            >
+            @if ($primaryMedia?->url)
+                <img
+                    src="{{ $primaryMedia->url }}"
+                    alt="{{ $product->name }}"
+                    loading="lazy"
+                    class="
+                        max-h-full max-w-full
+                        object-contain
+                        transition-transform duration-300
+                        group-hover:scale-105
+                    "
+                >
+            @else
+                <img
+                    src="https://placehold.co/400x400"
+                    alt="{{ $product->name }}"
+                    loading="lazy"
+                    class="
+                        max-h-full max-w-full
+                        object-contain
+                        transition-transform duration-300
+                        group-hover:scale-105
+                    "
+                >
+            @endif
         </a>
 
-        <span
-            class="
-                absolute left-0 top-0
-                rounded bg-red-500
-                px-1.5 py-0.5
-                text-[9px] font-bold text-white
-            "
-        >
-            -{{ $discount }}
-        </span>
+        {{-- Discount --}}
+        @if ($details->hasDiscount())
+            <span
+                class="
+                    absolute left-0 top-0
+                    rounded bg-red-500
+                    px-1.5 py-0.5
+                    text-[9px] font-bold text-white
+                "
+            >
+                -{{ $details->discountPercentage() }}%
+            </span>
+        @endif
     </div>
 
     {{-- Details --}}
     <div class="mt-2">
         <h3>
             <a
-                href="#"
+                href="{{ route('products.show', $product->slug) }}"
                 wire:navigate
                 class="
                     line-clamp-1
@@ -46,19 +69,21 @@
                     hover:text-micronix-600
                 "
             >
-                {{ $name }}
+                {{ $product->name }}
             </a>
         </h3>
 
         {{-- Price --}}
         <div class="mt-1 flex flex-wrap items-center gap-1.5">
             <span class="text-xs font-bold text-zinc-900">
-                KES {{ $price }}
+                KES {{ number_format($details->currentPrice()) }}
             </span>
 
-            <span class="text-[9px] text-zinc-400 line-through">
-                KES {{ $oldPrice }}
-            </span>
+            @if ($details->hasDiscount())
+                <span class="text-[9px] text-zinc-400 line-through">
+                    KES {{ number_format((float) $product->price) }}
+                </span>
+            @endif
         </div>
 
         {{-- Add to Cart --}}

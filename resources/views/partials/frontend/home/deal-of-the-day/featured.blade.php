@@ -1,5 +1,9 @@
 {{-- resources/views/partials/frontend/home/deal-of-the-day/featured.blade.php --}}
 
+@php
+    $details = $product->details();
+@endphp
+
 <article
     class="
         group flex h-[180px]
@@ -7,26 +11,78 @@
         bg-white p-3
     "
 >
-    {{-- Image --}}
-    <a
-        href="#"
-        wire:navigate
+    {{-- Images --}}
+    <div
         class="
-            flex h-full w-[42%]
-            shrink-0 items-center justify-center
+            h-full w-[42%]
+            min-w-0 shrink-0
         "
     >
-        <img
-            src="https://placehold.co/500x400"
-            alt="Dell Inspiron 15 Laptop"
-            class="
-                max-h-full max-w-full
-                object-contain
-                transition-transform duration-300
-                group-hover:scale-105
-            "
-        >
-    </a>
+        @if ($product->media->isNotEmpty())
+            <x-frontend.carousel
+                type="default"
+                :autoplay="true"
+                :loop="$product->media->count() > 1"
+                :dots="$product->media->count() > 1"
+                :navigation="false"
+                :delay="4000"
+                class="h-full"
+            >
+                @foreach ($product->media as $media)
+                    <div
+                        wire:key="deal-featured-{{ $product->public_id }}-media-{{ $media->id }}"
+                        class="
+                            flex h-full min-w-0
+                            flex-[0_0_100%]
+                            items-center justify-center
+                        "
+                    >
+                        <a
+                            href="{{ route('products.show', $product->slug) }}"
+                            wire:navigate
+                            class="
+                                flex h-full w-full
+                                items-center justify-center
+                            "
+                        >
+                            <img
+                                src="{{ $media->url }}"
+                                alt="{{ $product->name }}"
+                                loading="lazy"
+                                class="
+                                    max-h-full max-w-full
+                                    object-contain
+                                    transition-transform duration-300
+                                    group-hover:scale-105
+                                "
+                            >
+                        </a>
+                    </div>
+                @endforeach
+            </x-frontend.carousel>
+        @else
+            <a
+                href="{{ route('products.show', $product->slug) }}"
+                wire:navigate
+                class="
+                    flex h-full w-full
+                    items-center justify-center
+                "
+            >
+                <img
+                    src="https://placehold.co/500x400"
+                    alt="{{ $product->name }}"
+                    loading="lazy"
+                    class="
+                        max-h-full max-w-full
+                        object-contain
+                        transition-transform duration-300
+                        group-hover:scale-105
+                    "
+                >
+            </a>
+        @endif
+    </div>
 
     {{-- Details --}}
     <div class="min-w-0 flex-1">
@@ -34,7 +90,7 @@
         {{-- Name --}}
         <h3>
             <a
-                href="#"
+                href="{{ route('products.show', $product->slug) }}"
                 wire:navigate
                 class="
                     line-clamp-1
@@ -44,40 +100,44 @@
                     hover:text-micronix-600
                 "
             >
-                Dell Inspiron 15 Laptop
+                {{ $product->name }}
             </a>
         </h3>
 
         {{-- Specifications --}}
-        <p
-            class="
-                mt-1 line-clamp-1
-                text-[10px] text-zinc-500
-            "
-        >
-            Core i5 12th Gen · 8GB RAM · 512GB SSD · 15.6" FHD
-        </p>
+        @if ($product->short_description)
+            <p
+                class="
+                    mt-1 line-clamp-1
+                    text-[10px] text-zinc-500
+                "
+            >
+                {{ $product->short_description }}
+            </p>
+        @endif
 
         {{-- Price --}}
         <div class="mt-2 flex flex-wrap items-center gap-2">
             <span class="text-sm font-bold text-zinc-900">
-                KES 85,000
+                KES {{ number_format($details->currentPrice()) }}
             </span>
 
-            <span class="text-[10px] text-zinc-400 line-through">
-                KES 100,000
-            </span>
+            @if ($details->hasDiscount())
+                <span class="text-[10px] text-zinc-400 line-through">
+                    KES {{ number_format((float) $product->price) }}
+                </span>
 
-            <span
-                class="
-                    rounded bg-micronix-100
-                    px-1.5 py-0.5
-                    text-[9px] font-bold
-                    text-micronix-600
-                "
-            >
-                15% OFF
-            </span>
+                <span
+                    class="
+                        rounded bg-micronix-100
+                        px-1.5 py-0.5
+                        text-[9px] font-bold
+                        text-micronix-600
+                    "
+                >
+                    {{ $details->discountPercentage() }}% OFF
+                </span>
+            @endif
         </div>
 
         {{-- Rating --}}

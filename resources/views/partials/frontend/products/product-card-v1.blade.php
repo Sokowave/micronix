@@ -29,7 +29,7 @@
                 src="{{ $image?->url ?? 'https://placehold.co/600x600' }}"
                 alt="{{ $product->name }}"
                 class="
-                    h-full w-full object-contain p-4
+                    h-full w-full object-contain p-1 rounded-xl
                     transition-transform duration-300
                     group-hover:scale-105
                 "

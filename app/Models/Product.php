@@ -63,6 +63,28 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
+    public function collections(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Collection::class,
+            'collection_product'
+        )
+            ->withPivot('position')
+            ->withTimestamps()
+            ->orderByPivot('position');
+    }
+
+    public function deals(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Deal::class,
+            'deal_product'
+        )
+            ->withPivot('position')
+            ->withTimestamps()
+            ->orderByPivot('position');
+    }
+
     public function media(): BelongsToMany
     {
         return $this->belongsToMany(Media::class, 'product_media')
@@ -104,4 +126,5 @@ class Product extends Model
             'is_active' => 'boolean',
         ];
     }
+    
 }

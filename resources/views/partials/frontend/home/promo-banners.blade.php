@@ -11,12 +11,12 @@
             :navigation="true"
         >
             {{-- Build Your Dream Setup --}}
-            <div class="min-w-0 shrink-0 basis-[400px] pr-3">
+            <div class="min-w-0 shrink-0 basis-[450px] pr-3">
                 <a
                     href="#"
                     wire:navigate
                     class="
-                        group relative block min-h-[260px]
+                        group relative block min-h-[225px]
                         overflow-hidden rounded-xl bg-violet-50
                     "
                 >
@@ -25,7 +25,7 @@
                             Upgrade Your Setup
                         </span>
 
-                        <h3 class="mt-2 text-xl font-bold leading-tight text-zinc-900 xl:text-2xl">
+                        <h3 class="mt-2 text-base font-bold leading-tight text-zinc-900 xl:text-lg">
                             Build Your
                             <br>
                             Dream Setup
@@ -48,7 +48,7 @@
                         src="https://placehold.co/400x400"
                         alt="Computer setup"
                         class="
-                            absolute bottom-0 right-0
+                            absolute -bottom-8 -right-8 rotate-30
                             h-[82%] w-[48%]
                             object-contain object-bottom
                             transition-transform duration-500
@@ -59,12 +59,12 @@
             </div>
 
             {{-- Work Smart Anywhere --}}
-            <div class="min-w-0 shrink-0 basis-[400px] pr-3">
+            <div class="min-w-0 shrink-0 basis-[450px] pr-3">
                 <a
                     href="#"
                     wire:navigate
                     class="
-                        group relative block min-h-[260px]
+                        group relative block min-h-[225px]
                         overflow-hidden rounded-xl bg-indigo-50
                     "
                 >
@@ -96,7 +96,7 @@
                         src="https://placehold.co/400x400"
                         alt="Laptop computer"
                         class="
-                            absolute bottom-0 right-0
+                            absolute -bottom-8 -right-8 rotate-30
                             h-[82%] w-[50%]
                             object-contain object-bottom
                             transition-transform duration-500
@@ -107,12 +107,12 @@
             </div>
 
             {{-- Capture Every Moment --}}
-            <div class="min-w-0 shrink-0 basis-[400px] pr-3">
+            <div class="min-w-0 shrink-0 basis-[450px] pr-3">
                 <a
                     href="#"
                     wire:navigate
                     class="
-                        group relative block min-h-[260px]
+                        group relative block min-h-[225px]
                         overflow-hidden rounded-xl bg-fuchsia-50
                     "
                 >
@@ -144,7 +144,7 @@
                         src="https://placehold.co/400x400"
                         alt="Digital camera"
                         class="
-                            absolute bottom-0 right-0
+                            absolute -bottom-8 -right-8 rotate-30
                             h-[82%] w-[48%]
                             object-contain object-bottom
                             transition-transform duration-500

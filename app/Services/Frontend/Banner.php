@@ -39,4 +39,9 @@ class Banner
     {
         return $this->get('promo_banner');
     }
+
+    public function categorySections(): Collection
+    {
+        return $this->get('home_category_sections');
+    }
 }

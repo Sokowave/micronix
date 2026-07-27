@@ -13,18 +13,44 @@
 
     @include('partials.frontend.home.deal-of-the-day')
 
-   {{-- Laptops + Computer Components --}}
-    <section class="py-4">
-        <div class="mx-auto w-full max-w-7xl px-4 xl:px-6">
+    {{-- Category Product Sections --}}
+    @if ($categorySections->isNotEmpty())
+        @foreach ($categorySections->chunk(2) as $groupIndex => $group)
+            {{-- Category pair --}}
+            <section class="py-4">
+                <div class="mx-auto w-full max-w-7xl px-4 xl:px-6">
+                    <div class="grid gap-6 lg:grid-cols-2">
+                        @foreach ($group as $section)
+                            @include('partials.frontend.home.category-products', [
+                                'category' => $section['category'],
+                                'products' => $section['products'],
+                            ])
+                        @endforeach
+                    </div>
+                </div>
+            </section>
 
-            <div class="grid gap-6 lg:grid-cols-2">
-                @include('partials.frontend.home.laptops-computers')
-
-                @include('partials.frontend.home.computer-components')
-            </div>
-
-        </div>
-    </section>
+            {{-- Banner after category pair --}}
+            @if ($banner = $categoryBanners->get($groupIndex))
+                <section class="py-4">
+                    <div class="mx-auto w-full max-w-7xl px-4 xl:px-6">
+                        @include('partials.frontend.home.category-banner', [
+                            'banner' => $banner,
+                        ])
+                    </div>
+                </section>
+            @else
+            {{-- Banner after every two categories --}}
+<section class="py-4">
+    <div class="mx-auto w-full max-w-7xl px-4 xl:px-6">
+        @include('partials.frontend.home.category-banner', [
+            'banner' => $categoryBanners->get($groupIndex),
+        ])
+    </div>
+</section>
+            @endif
+        @endforeach
+    @endif
 
     @include('partials.frontend.home.use-cases')
 

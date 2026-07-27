@@ -9,16 +9,20 @@
     "
 >
     {{-- Title --}}
-    <div class="flex items-center gap-1.5">
-        <flux:icon.bolt class="size-5 fill-white" />
+    <div class="min-w-0 flex items-center gap-1.5">
+        <flux:icon.bolt class="size-5 shrink-0 fill-white" />
 
-        <h2 class="text-base font-semibold">
-            Deal of the Day
+        <h2 class="truncate text-base font-semibold">
+            {{ $product->name }}
         </h2>
     </div>
 
     {{-- Countdown --}}
-    <div class="flex items-center gap-1.5">
+    <div
+        class="ml-3 flex shrink-0 items-center gap-1.5"
+        data-countdown
+        data-countdown-ends-at="{{ $deal->ends_at->toIso8601String() }}"
+    >
         <span
             class="
                 rounded bg-micronix-700/50
@@ -37,8 +41,11 @@
                 rounded bg-white/20
             "
         >
-            <span class="text-xs font-bold leading-none">
-                08
+            <span
+                data-countdown-hours
+                class="text-xs font-bold leading-none"
+            >
+                00
             </span>
 
             <span class="mt-0.5 text-[7px] leading-none text-white/70">
@@ -54,8 +61,11 @@
                 rounded bg-white/20
             "
         >
-            <span class="text-xs font-bold leading-none">
-                24
+            <span
+                data-countdown-minutes
+                class="text-xs font-bold leading-none"
+            >
+                00
             </span>
 
             <span class="mt-0.5 text-[7px] leading-none text-white/70">
@@ -71,8 +81,11 @@
                 rounded bg-white/20
             "
         >
-            <span class="text-xs font-bold leading-none">
-                36
+            <span
+                data-countdown-seconds
+                class="text-xs font-bold leading-none"
+            >
+                00
             </span>
 
             <span class="mt-0.5 text-[7px] leading-none text-white/70">

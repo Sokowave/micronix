@@ -24,7 +24,7 @@
                 items-center justify-center
                 overflow-hidden rounded-lg
                 border border-zinc-200
-                bg-white p-3
+                bg-white p-1
                 transition
                 group-hover:border-micronix-200
                 group-hover:shadow-sm

@@ -2,10 +2,12 @@
 
 import './mega-menu';
 
+import { initCountdowns } from './countdown';
 import { initEmbla } from './embla';
 import { initProductGallery } from './product-gallery';
 
 function initComponents() {
+    initCountdowns();
     initEmbla();
     initProductGallery();
 }

@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Frontend\Products;
 
-use App\Models\Product;
+use App\Services\Deals\Show as DealShow;
 use App\Services\Frontend\Breadcrumb;
 use App\Services\Frontend\Product\FindBySlug;
 use App\Services\Frontend\Product\Related;
@@ -13,27 +13,31 @@ use Livewire\Component;
 #[Layout('layouts.frontend')]
 class Show extends Component
 {
-    public Product $product;
+    public string $slug;
 
-    public function mount(
-        string $slug,
-        FindBySlug $findBySlug,
-    ): void {
-        $this->product = $findBySlug->get($slug);
+    public function mount(string $slug): void
+    {
+        $this->slug = $slug;
     }
 
     public function render(
+        FindBySlug $findBySlug,
         Related $related,
         Breadcrumb $breadcrumb,
+        DealShow $deals,
     ): View {
+        $product = $findBySlug->get($this->slug);
+
         return view('livewire.frontend.products.show', [
+            'product' => $product,
+
             'breadcrumbs' => $breadcrumb->category(
-                $this->product->category
+                $product->category
             ),
 
-            'relatedProducts' => $related->get(
-                $this->product
-            ),
+            'deal' => $deals->forProduct($product),
+
+            'relatedProducts' => $related->get($product),
         ]);
     }
 }
