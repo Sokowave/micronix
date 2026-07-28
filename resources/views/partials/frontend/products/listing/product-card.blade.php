@@ -10,11 +10,17 @@
         group flex min-w-0 flex-col
         rounded-lg border border-zinc-200
         bg-white p-2
-        transition
+        transition relative overflow-hidden
         hover:border-zinc-300
         hover:shadow-sm
     "
 >
+    @if($product->details()->isNew())
+        <span class="absolute top-2 -left-8 z-10 w-24 -rotate-45 bg-green-500 py-1 text-center text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+            New In
+        </span>
+    @endif
+
     {{-- Image --}}
     <div class="relative aspect-square rounded overflow-hidden">
 
@@ -22,24 +28,13 @@
         @if ($details->hasDiscount())
             <span
                 class="
-                    absolute left-0 top-0 z-10
-                    rounded bg-red-500
+                    absolute right-0 top-0 z-10
+                    rounded text-red-500
                     px-1.5 py-0.5
-                    text-[10px] font-bold text-white
+                    text-[10px] font-bold bg-red-100
                 "
             >
                 -{{ $details->discountPercentage() }}%
-            </span>
-        @elseif ($product->condition === 'new')
-            <span
-                class="
-                    absolute left-0 top-0 z-10
-                    rounded bg-green-500
-                    px-1.5 py-0.5
-                    text-[10px] font-bold uppercase text-white
-                "
-            >
-                New
             </span>
         @endif
 
@@ -48,13 +43,13 @@
             type="button"
             aria-label="Add {{ $product->name }} to wishlist"
             class="
-                absolute right-0 top-0 z-10
+                absolute right-0 bottom-0 z-10
                 flex size-7 cursor-pointer
                 items-center justify-center
                 rounded-full
                 text-zinc-600
                 transition
-                hover:bg-zinc-100
+                bg-zinc-50
                 hover:text-micronix-600
             "
         >

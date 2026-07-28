@@ -49,13 +49,32 @@
 
             @endforeach
 
-        @else
-            <li
-                class="font-medium text-zinc-700"
-                aria-current="page"
-            >
-                Products
+        @elseif (filled($search))
+
+            <li>
+                <a
+                    href="{{ route('products.index') }}"
+                    wire:navigate
+                    class="transition hover:text-micronix-600"
+                >
+                    All Products
+                </a>
             </li>
+
+            <li class="flex items-center" aria-hidden="true">
+                <flux:icon.chevron-right class="size-3.5 text-zinc-300" />
+            </li>
+
+            <li class="font-medium text-zinc-700" aria-current="page">
+                Search: "{{ $search }}"
+            </li>
+
+        @else
+
+            <li class="font-medium text-zinc-700" aria-current="page">
+                All Products
+            </li>
+
         @endif
 
     </ol>

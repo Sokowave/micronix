@@ -40,6 +40,8 @@
     --color-accent: var(--color-micronix-500);
     --color-accent-content: var(--color-micronix-600);
     --color-accent-foreground: var(--color-white);
+
+    --breakpoint-3xl: 120rem; /* 1920px */
 }
 
 @layer theme {

@@ -76,7 +76,7 @@
                                             alt="{{ $image['alt'] }}"
                                             loading="{{ $index ? 'lazy' : 'eager' }}"
                                             draggable="false"
-                                            class="h-full w-full select-none object-contain transition-transform duration-300 group-hover/gallery:scale-[1.02]"
+                                            class="h-full w-full select-none object-contain"
                                         >
                                     </button>
                                 </div>

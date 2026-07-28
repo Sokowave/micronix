@@ -148,6 +148,17 @@ class ProductDetails
         ]);
     }
 
+
+    /**
+    * Determine whether the product is new.
+    */
+    public function isNew(int $days = 14): bool
+    {
+        return $this->product->created_at?->gte(
+            now()->subDays($days)
+        ) ?? false;
+    }
+
     /**
      * Get the primary media item.
      */

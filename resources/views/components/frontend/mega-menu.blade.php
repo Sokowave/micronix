@@ -106,7 +106,7 @@
             class="
                 relative
                 min-h-[420px]
-                w-[992px]
+                w-[768px]
             "
         >
             @foreach ($categories as $index => $category)
