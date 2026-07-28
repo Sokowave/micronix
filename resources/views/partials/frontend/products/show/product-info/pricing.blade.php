@@ -7,8 +7,7 @@
         <span
             class="
                 text-2xl font-bold tracking-tight
-                text-micronix-600
-                sm:text-3xl
+                text-micronix-600                
             "
         >
             KES {{ number_format($details->currentPrice()) }}

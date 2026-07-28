@@ -13,7 +13,7 @@
         <flux:icon.bolt class="size-5 shrink-0 fill-white" />
 
         <h2 class="truncate text-base font-semibold">
-            {{ $product->name }}
+            {{ $deal->name }}
         </h2>
     </div>
 

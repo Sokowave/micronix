@@ -13,25 +13,21 @@
 
             <div
                 class="
-                    grid grid-cols-1
-                    items-start gap-6
-                    lg:grid-cols-12
-                    lg:gap-6
-                    xl:gap-8
+                   grid gap-4 lg:grid-cols-[600fr_650fr_400fr]
                 "
             >
                 {{-- Gallery --}}
-                <div class="min-w-0 lg:col-span-5">
+                <div class="min-w-0">
                     @include('partials.frontend.products.show.gallery')
                 </div>
 
                 {{-- Product Information --}}
-                <div class="min-w-0 lg:col-span-4">
+                <div class="min-w-0">
                     @include('partials.frontend.products.show.product-info')
                 </div>
 
                 {{-- Actions --}}
-                <aside class="min-w-0 lg:col-span-3">
+                <aside class="min-w-0">
                     <div
                         class="
                             rounded-xl
