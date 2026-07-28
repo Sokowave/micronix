@@ -35,6 +35,9 @@
                             src="{{ \App\Support\MediaUrl::get($banner->media) }}"
                             alt="{{ $banner->title ?? $alt }}"
                             class="h-full w-full object-cover"
+                            loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
                         >
                     @endif
                 </a>

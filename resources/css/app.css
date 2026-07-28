@@ -24,17 +24,18 @@
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
 
-    --color-micronix-50: #f4f3ff;
-    --color-micronix-100: #ebe9fe;
-    --color-micronix-200: #d9d6fe;
-    --color-micronix-300: #bdb4fe;
-    --color-micronix-400: #9985fc;
-    --color-micronix-500: #4f39f6;
-    --color-micronix-600: #4930e8;
-    --color-micronix-700: #3d26c4;
-    --color-micronix-800: #3322a0;
-    --color-micronix-900: #2c2080;
-    --color-micronix-950: #19134a;
+    --color-micronix-50:  #eff6ff;
+    --color-micronix-100: #dbeafe;
+    --color-micronix-200: #bfdbfe;
+    --color-micronix-300: #93c5fd;
+    --color-micronix-400: #60a5fa;
+    --color-micronix-500: #2684ff;
+    --color-micronix-600: #0066e6;
+    --color-micronix-700: #0052b8;
+    --color-micronix-800: #06458f;
+    --color-micronix-900: #0a3a75;
+    --color-micronix-950: #06244a;
+
 
     --color-accent: var(--color-micronix-500);
     --color-accent-content: var(--color-micronix-600);
@@ -48,6 +49,7 @@
         --color-accent-foreground: var(--color-zinc-950);
     }
 }
+
 
 @layer base {
     *,
@@ -72,3 +74,4 @@ textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
+

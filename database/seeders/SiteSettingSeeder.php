@@ -18,7 +18,7 @@ class SiteSettingSeeder extends Seeder
 
             [
                 'key' => 'site_name',
-                'value' => 'Micronix',
+                'value' => 'Micronix Gadgets',
                 'type' => 'string',
             ],
             [

@@ -45,6 +45,7 @@
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
             @fonts
+            
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 

@@ -140,6 +140,14 @@ class ProductDetails
             : "{$months} months warranty";
     }
 
+    public function brandUrl(): string
+    {
+        return route('categories.show', [
+            'category' => $this->product->category,
+            'brand' => [$this->product->brand->slug],
+        ]);
+    }
+
     /**
      * Get the primary media item.
      */

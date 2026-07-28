@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             CollectionSeeder::class,
             CollectionProductSeeder::class,
             DealSeeder::class,
+            SeoLandingPageSeeder::class,
         ]);
     }
 }

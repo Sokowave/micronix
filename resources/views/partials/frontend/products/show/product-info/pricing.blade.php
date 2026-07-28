@@ -1,10 +1,6 @@
 {{-- resources/views/partials/frontend/products/show/product-info/pricing.blade.php --}}
 @include('partials/frontend/products/show/deal-countdown')
 
-@php
-    $details = $product->details();
-@endphp
-
 <div class="mt-5 border-y border-zinc-100 py-4">
 
     <div class="flex flex-wrap items-end gap-x-3 gap-y-1">

@@ -30,14 +30,14 @@ return new class extends Migration
             $table->string('sku')->unique();
 
             // Pricing
-            $table->decimal('price', 12, 2);
-            $table->decimal('sale_price', 12, 2)->nullable();
+            $table->decimal('price', 12, 2)->index();
+            $table->decimal('sale_price', 12, 2)->nullable()->index();
 
             // Inventory
             $table->unsignedInteger('stock_quantity')->default(0);
 
             // Details
-            $table->string('condition')->default('new');
+            $table->string('condition')->default('new')->index();
 
             $table->unsignedInteger('warranty')
                 ->nullable()

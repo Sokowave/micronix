@@ -1,4 +1,7 @@
 {{-- resources/views/livewire/frontend/products/show.blade.php --}}
+@php
+    $details = $product->details();
+@endphp
 
 <div class="bg-white">
 

@@ -12,8 +12,8 @@ use App\Livewire\Backoffice\Specifications\Index as SpecificationsIndex;
 use App\Livewire\Backoffice\Users\Index as UsersIndex;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'verified', 'backoffice'])->prefix('app')->name('backoffice.')->group(function () {
-    Route::livewire('/dashboard', Dashboard::class)->name('dashboard');
+Route::middleware(['auth', 'verified', 'backoffice'])->prefix('dashboard')->name('backoffice.')->group(function () {
+    Route::livewire('/', Dashboard::class)->name('dashboard');
 
     Route::livewire('/products', ProductsIndex::class)->name('products.index');
     Route::livewire('/products/create', ProductCreate::class)->name('products.create');

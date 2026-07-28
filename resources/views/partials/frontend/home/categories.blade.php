@@ -77,7 +77,9 @@
                                         alt="{{ $category->name }}"
                                         width="160"
                                         height="160"
-                                        loading="lazy"
+                                        loading="eager"
+                                        fetchpriority="high"
+                                        decoding="async"
                                         class="
                                             h-full w-full object-contain p-2
                                             transition-transform duration-300
@@ -90,7 +92,9 @@
                                         alt="{{ $category->name }}"
                                         width="160"
                                         height="160"
-                                        loading="lazy"
+                                        loading="eager"
+                                        fetchpriority="high"
+                                        decoding="async"
                                         class="
                                             h-full w-full object-contain p-2
                                             transition-transform duration-300

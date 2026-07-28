@@ -3,7 +3,7 @@
 <div class="flex flex-wrap items-center justify-between gap-3">
     @if ($product->brand)
         <a
-            href="#"
+            href="{{ $details->brandUrl() }}"
             wire:navigate
             class="
                 text-xs font-semibold uppercase tracking-wide

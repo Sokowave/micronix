@@ -6,6 +6,7 @@ use App\Livewire\Frontend\Products\Index as ProductsIndex;
 use App\Livewire\Frontend\Products\Show as ProductShow;
 use App\Livewire\Frontend\Collections\Index as CollectionIndex;
 use App\Livewire\Frontend\Collections\Show as CollectionShow;
+use App\Livewire\Frontend\SeoLandingPage\Show as SeoLandingPageShow;
 
 
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,5 @@ Route::livewire('/search', ProductsIndex::class)->name('search');
 
 Route::get('/collections', CollectionIndex::class)->name('collections.index');
 Route::get('/collections/{slug}', CollectionShow::class)->name('collections.show');
+
+Route::get('/{slug}', SeoLandingPageShow::class)->name('seo-landing-page.show');

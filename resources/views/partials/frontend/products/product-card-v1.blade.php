@@ -34,6 +34,7 @@
                     group-hover:scale-105
                 "
                 loading="lazy"
+                decoding="async"
                 width="600"
                 height="600"
             >

@@ -3,6 +3,7 @@
 namespace App\Livewire\Frontend;
 
 use App\Services\Frontend\Banner;
+use App\Services\Frontend\Brand;
 use App\Services\Frontend\Category;
 use App\Services\Collection\Index as CollectionIndex;
 use App\Services\Deals\Index as DealIndex;
@@ -20,6 +21,7 @@ class Home extends Component
 {
     public function render(
         Banner $banners,
+        Brand $brands,
         CollectionIndex $collections,
         DealIndex $deals,
         Category $categories,
@@ -38,7 +40,7 @@ class Home extends Component
 
             // Categories
             'categories' => $categories->parents(),
-
+            'brands' => $brands->available(),
             'deal' => $deals->current(),
 
             // Products
@@ -49,3 +51,5 @@ class Home extends Component
         ]);
     }
 }
+
+
